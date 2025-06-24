@@ -1,242 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HVAC Rent-to-Own Program</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        margin: 0;
-        padding: 20px;
-        background-color: #f5f5f5;
-      }
 
-      .main-heading {
-        color: #2f3b48;
-        text-align: center;
-        font-family: Poppins, sans-serif;
-        font-size: 36px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        margin: 40px 0;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HVAC Rent-to-Own Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
 
-      .description-text {
-        color: #3e3d3d;
-        text-align: center;
-        font-family: Poppins, sans-serif;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 130%;
-        max-width: 800px;
-        margin: 0 auto 40px;
-      }
+    .main-banner {
+      display: flex;
+      justify-content: center;
+    }
 
-      .button-container {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin: 40px 0;
-        flex-wrap: wrap;
-      }
+    .main-heading {
+      color: #2f3b48;
+      text-align: center;
+      font-family: Poppins, sans-serif;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin: 40px 0;
+    }
 
-      .btn {
-        padding: 15px 30px;
-        border-radius: 15px;
-        font-family: Poppins, sans-serif;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 127.89%;
-        text-align: center;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-block;
-        transition: all 0.3s ease;
-        min-width: 200px;
-      }
+    .description-text {
+      color: #3e3d3d;
+      text-align: center;
+      font-family: Poppins, sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 130%;
+      max-width: 800px;
+      margin: 0 auto 40px;
+    }
 
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      border-radius: 15px;
+      font-family: Poppins, sans-serif;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 127.89%;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      min-width: 200px;
+    }
+
+    .btn-outline {
+      border: 2px solid #4f6d7a;
+      background: transparent;
+      color: #4f6d7a;
+      order: 2;
+    }
+
+    .btn-filled {
+      border: none;
+      background: #4f6d7a;
+      color: #fff;
+      order: 1;
+    }
+
+    .btn-outline:hover {
+      border: 2px solid #ff822f;
+      color: #ff822f;
+    }
+
+    .btn-filled:hover {
+      background: #ff822f;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-heading {
+      color: #1e1e1e;
+      text-align: center;
+      font-family: "Poppins", sans-serif;
+
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 127.89%;
+    }
+
+    .vertical-line {
+      width: 802px;
+      height: 2px;
+      background: #bfc9cd;
+    }
+
+    .form-section {
+      display: flex;
+      gap: 2rem;
+
+    }
+
+    .section-header {
+      flex: 1;
+      color: #4f6d7a;
+      font-family: "Poppins", sans-serif;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 127.89%;
+
+    }
+
+    .form-input {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 2rem 0;
+    }
+
+    label {
+      color: #1e1e1e;
+      font-size: 16px;
+      font-family: "Poppins", sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 127.89%;
+    }
+
+    input {
+
+      height: 50px;
+      padding-left: 1rem;
+      border-radius: 10px;
+      border: 1px solid #D9D9D9;
+      background: #FFF;
+    }
+
+    input::placeholder {
+      color: #858585;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 127.89%;
+    }
+
+    .row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+
+    }
+
+    .row>div {
+      flex: 1;
+    }
+
+    input[type="checkbox"] {
+      border-radius: 2px;
+      background: #4F6D7A;
+      width: 18px;
+      height: 18px;
+    }
+
+    .form .btn-filled {
+      border-radius: 15px;
+      background: #4F6D7A;
+      color: #FFF;
+      text-align: center;
+      font-family: "Poppins", sans-serif;
+
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 127.89%;
+      align-self: center;
+
+    }
+
+    @media (min-width: 768px) {
       .btn-outline {
-        border: 2px solid #4f6d7a;
-        background: transparent;
-        color: #4f6d7a;
-        order: 2;
-      }
-
-      .btn-filled {
-        border: none;
-        background: #4f6d7a;
-        color: #fff;
         order: 1;
       }
 
-      .btn-outline:hover {
-        border: 2px solid #ff822f;
-        color: #ff822f;
+      .btn-filled {
+        order: 2;
       }
+    }
 
-      .btn-filled:hover {
-        background: #ff822f;
-      }
+    .cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
 
-      @media (min-width: 768px) {
-        .btn-outline {
-          order: 1;
-        }
+    .card {
+      border-radius: 20px;
+      background: #2f3b48;
+      padding: 40px 30px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      width: 277px;
+      height: 316px;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      margin: 0 auto;
+    }
 
-        .btn-filled {
-          order: 2;
-        }
-      }
+    .card-icon {
+      width: 88px;
+      height: 88px;
+      flex-shrink: 0;
+      margin: 0 auto 24px;
+    }
 
+    .card-heading {
+      color: #fff;
+      text-align: center;
+      font-family: Poppins, sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 127.89%;
+      margin: 0 0 16px 0;
+    }
+
+    .card-content {
+      color: #fff;
+      text-align: center;
+      font-family: Poppins, sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 112%;
+      margin: 0;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    @media (min-width: 768px) {
       .cards-container {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        max-width: 1200px;
-        margin: 60px auto;
-        padding: 0 20px;
-      }
-
-      .card {
-        border-radius: 20px;
-        background: #2f3b48;
-        padding: 40px 30px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        width: 277px;
-        height: 316px;
-        flex-shrink: 0;
-        box-sizing: border-box;
-        margin: 0 auto;
-      }
-
-      .card-icon {
-        width: 88px;
-        height: 88px;
-        flex-shrink: 0;
-        margin: 0 auto 24px;
-      }
-
-      .card-heading {
-        color: #fff;
-        text-align: center;
-        font-family: Poppins, sans-serif;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 127.89%;
-        margin: 0 0 16px 0;
-      }
-
-      .card-content {
-        color: #fff;
-        text-align: center;
-        font-family: Poppins, sans-serif;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 112%;
-        margin: 0;
-        flex-grow: 1;
-        display: flex;
-        align-items: center;
+        flex-direction: row;
+        gap: 30px;
         justify-content: center;
       }
 
-      @media (min-width: 768px) {
-        .cards-container {
-          flex-direction: row;
-          gap: 30px;
-          justify-content: center;
-        }
-
-        .card {
-          margin: 0;
-        }
+      .card {
+        margin: 0;
       }
-    </style>
-  </head>
-  <body>
-    <h1 class="main-heading">HVAC Rent-to-Own Program</h1>
+    }
+  </style>
+</head>
 
-    <p class="description-text">
-      Complete the short form below to see if you qualify for our rent-to-own
-      program on scratch and dent heating and cooling equipment. We'll ask for
-      some basic information—like your name, contact details, and a few
-      income-related questions—to help determine eligibility. There's no credit
-      needed to apply, and no obligation.
-    </p>
+<body>
+  <div class="main-banner">
+    <img src="./rto-header-3.jpg" alt="Heat & Cool Now Pay Over Time" width="1174" height="243" />
+  </div>
+  <h1 class="main-heading">HVAC Rent-to-Own Program</h1>
 
-    <div class="button-container">
-      <a href="#" class="btn btn-outline">Shop Qualifying HVAC</a>
-      <a href="#" class="btn btn-filled">Apply Now</a>
+  <p class="description-text">
+    Complete the short form below to see if you qualify for our rent-to-own
+    program on scratch and dent heating and cooling equipment. We'll ask for
+    some basic information—like your name, contact details, and a few
+    income-related questions—to help determine eligibility. There's no credit
+    needed to apply, and no obligation.
+  </p>
+
+  <div class="button-container">
+    <a href="#" class="btn btn-outline">Shop Qualifying HVAC</a>
+    <a href="#" class="btn btn-filled">Apply Now</a>
+  </div>
+
+  <div class="cards-container">
+    <div class="card">
+      <div class="card-icon">
+        <img src="./icons-forms-01.svg" alt="No Credit Checks" width="88" height="88" />
+      </div>
+      <h3 class="card-heading">No Credit Checks</h3>
+      <p class="card-content">
+        There's no credit needed to apply for the rent-to-own program.
+      </p>
     </div>
 
-    <div class="cards-container">
-      <div class="card">
-        <div class="card-icon">
-          <img
-            src="./icons-forms-01.svg"
-            alt="No Credit Checks"
-            width="88"
-            height="88"
-          />
-        </div>
-        <h3 class="card-heading">No Credit Checks</h3>
-        <p class="card-content">
-          There's no credit needed to apply for the rent-to-own program.
-        </p>
+    <div class="card">
+      <div class="card-icon">
+        <img src="./icons-forms-02.svg" alt="Flexible Payments" width="88" height="88" />
       </div>
+      <h3 class="card-heading">Flexible Payments</h3>
+      <p class="card-content">
+        Sign a rental agreement after determining which payment terms suit you
+        best.
+      </p>
+    </div>
 
-      <div class="card">
-        <div class="card-icon">
-          <img
-            src="./icons-forms-02.svg"
-            alt="Flexible Payments"
-            width="88"
-            height="88"
-          />
-        </div>
-        <h3 class="card-heading">Flexible Payments</h3>
-        <p class="card-content">
-          Sign a rental agreement after determining which payment terms suit you
-          best.
-        </p>
+    <div class="card">
+      <div class="card-icon">
+        <img src="./icons-forms-03.svg" alt="Obtain Ownership" width="88" height="88" />
       </div>
+      <h3 class="card-heading">Obtain Ownership</h3>
+      <p class="card-content">
+        After making the monthly payments on the contract term you will have
+        full ownership of the product.
+      </p>
+    </div>
+  </div>
 
-      <div class="card">
-        <div class="card-icon">
-          <img
-            src="./icons-forms-03.svg"
-            alt="Obtain Ownership"
-            width="88"
-            height="88"
-          />
+  <h2 class="main-heading">Apply to the Rent-to-Own Program</h2>
+
+  <p class="description-text">
+    Fill out the form to see if you're eligible for our Rent-to-Own HVAC
+    Program. We make it easy to spread out the cost of heating and cooling
+    equipment with flexible payment options. Once you apply, a representative
+    will reach out to review your eligibility and help build a payment plan
+    that works for your budget.
+  </p>
+
+  <form class="form">
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
+      <text x="20" y="25" text-anchor="middle" fill="white" font-size="16" font-family="Poppins, sans-serif"
+        font-weight="600">
+        1
+      </text>
+    </svg>
+    <h3 class="form-heading">Contact Details</h3>
+    <div class="vertical-line"></div>
+    <div class="form-section">
+      <h4 class="section-header">Personal Information</h4>
+      <div class="form-input">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required />
+
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob" required />
+
+        <label for="license">Driver License Number</label>
+        <input type="text" id="license" name="license" placeholder="Enter your full driver's license number" required />
+      </div>
+    </div>
+    <div class="vertical-line"></div>
+
+    <div class="form-section">
+      <h4 class="section-header">Contact Details</h4>
+      <div class="form-input">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="sample@email.com" required />
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="XXX-XXX-XXXX" required />
+      </div>
+    </div>
+    <div class="vertical-line"></div>
+
+    <div class="form-section">
+      <h4 class="section-header">Mailing Address</h4>
+      <div class="form-input">
+        <label for="mailStreet">Street Address</label>
+        <input type="text" id="mailStreet" name="mailStreet" placeholder="e.g. 123 Main St or 456 Elm Ave Apt 2B"
+          required />
+        <div class="row">
+          <div>
+            <label for="mailCity">City</label>
+            <input type="text" id="mailCity" name="mailCity" placeholder="City of residence" required />
+          </div>
+          <div>
+            <label for="mailState">State</label>
+            <input type="text" id="mailState" name="mailState" placeholder="XX" required />
+          </div>
+          <div> <label for="mailZip">ZIP Code</label>
+            <input type="text" id="mailZip" name="mailZip" placeholder="5-digit ZIP code" required />
+          </div>
         </div>
-        <h3 class="card-heading">Obtain Ownership</h3>
-        <p class="card-content">
-          After making the monthly payments on the contract term you will have
-          full ownership of the product.
-        </p>
       </div>
     </div>
 
-    <h2 class="main-heading">Apply to the Rent-to-Own Program</h2>
+    <div class="form-section">
+      <h4 class="section-header">Physical Address</h4>
+      <div class="form-input">
+        <label for="physStreet">Street Address</label>
+        <input type="text" id="physStreet" name="physStreet" placeholder="e.g. 123 Main St or 456 Elm Ave Apt 2B"
+          required />
+        <div class="row">
+          <div>
+            <label for="physCity">City</label>
+            <input type="text" id="physCity" name="physCity" placeholder="City of residence" required />
+          </div>
+          <div><label for="physState">State</label>
+            <input type="text" id="physState" name="physState" placeholder="XX" required />
+          </div>
+          <div> <label for="physZip">ZIP Code</label>
+            <input type="text" id="physZip" name="physZip" placeholder="5-digit ZIP code" required />
+          </div>
+        </div>
+      </div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
+      <text x="20" y="25" text-anchor="middle" fill="white" font-size="16" font-family="Poppins, sans-serif"
+        font-weight="600">
+        2
+      </text>
+    </svg>
+    <h3 class="form-heading">Income & References</h3>
+    <div class="vertical-line"></div>
+    <div class="form-section">
+      <h4 class="section-header">Income Information</h4>
+      <div class="form-input">
+        <label for="annualIncome">What is your estimated annual income?</label>
+        <input type="text" id="annualIncome" name="annualIncome"
+          placeholder="Include income from all sources. An estimate is fine." required />
 
-    <p class="description-text">
-      Fill out the form to see if you're eligible for our Rent-to-Own HVAC
-      Program. We make it easy to spread out the cost of heating and cooling
-      equipment with flexible payment options. Once you apply, a representative
-      will reach out to review your eligibility and help build a payment plan
-      that works for your budget.
-    </p>
-  </body>
+        <label for="incomeSource">What is your primary source of income?</label>
+        <input type="text" id="incomeSource" name="incomeSource" placeholder="Ex. employment, self-employment"
+          required />
+      </div>
+    </div>
+    <div class="vertical-line"></div>
+
+    <div class="form-section">
+      <h4 class="section-header">References</h4>
+      <div class="form-input">
+        <label for="reference1">Reference Name 1</label>
+        <input type="text" id="reference1" name="reference1" placeholder="Full Name of Reference" required />
+
+        <label for="referencephone1">Reference Phone Number 1</label>
+        <input type="tel" id="referencephone1" name="referencephone1" placeholder="XXX-XXX-XXXX" required />
+
+        <label for="reference2">Reference Name 2</label>
+        <input type="text" id="reference2" name="reference2" placeholder="Full Name of Reference" required />
+
+        <label for="referencephone2">Reference Phone Number 2</label>
+        <input type="tel" id="referencephone2" name="referencephone2" placeholder="XXX-XXX-XXXX" required />
+        <label for="reference3">Reference Name 3</label>
+        <input type="text" id="reference3" name="reference3" placeholder="Full Name of Reference" required />
+
+        <label for="referencephone3">Reference Phone Number 3</label>
+        <input type="tel" id="referencephone3" name="referencephone3" placeholder="XXX-XXX-XXXX" required />
+      </div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
+      <text x="20" y="25" text-anchor="middle" fill="white" font-size="16" font-family="Poppins, sans-serif"
+        font-weight="600">
+        3
+      </text>
+    </svg>
+    <h3 class="form-heading">Confirmation</h3>
+    <div class="vertical-line"></div>
+    <div class="form-input">
+      <label>
+        <input type="checkbox" name="newsletter" checked />
+        <strong>Yes, sign me up for the IWAE newsletter!</strong><br />
+        <small>
+          Get exclusive deals and be the first to know about new products,
+          promos, and more.
+        </small>
+      </label>
+      <button class="btn btn-filled"> Submit Application</button>
+    </div>
+  </form>
+</body>
+
 </html>
