@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HVAC Rent-to-Own Program</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+
+      .main-heading {
+        color: #2f3b48;
+        text-align: center;
+        font-family: Poppins, sans-serif;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin: 40px 0;
+      }
+
+      .description-text {
+        color: #3e3d3d;
+        text-align: center;
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        max-width: 800px;
+        margin: 0 auto 40px;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 40px 0;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 15px 30px;
+        border-radius: 15px;
+        font-family: Poppins, sans-serif;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 127.89%;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        min-width: 200px;
+      }
+
+      .btn-outline {
+        border: 2px solid #4f6d7a;
+        background: transparent;
+        color: #4f6d7a;
+        order: 2;
+      }
+
+      .btn-filled {
+        border: none;
+        background: #4f6d7a;
+        color: #fff;
+        order: 1;
+      }
+
+      .btn-outline:hover {
+        border: 2px solid #ff822f;
+        color: #ff822f;
+      }
+
+      .btn-filled:hover {
+        background: #ff822f;
+      }
+
+      @media (min-width: 768px) {
+        .btn-outline {
+          order: 1;
+        }
+
+        .btn-filled {
+          order: 2;
+        }
+      }
+
+      .cards-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 0 20px;
+      }
+
+      .card {
+        border-radius: 20px;
+        background: #2f3b48;
+        padding: 40px 30px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        width: 277px;
+        height: 316px;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        margin: 0 auto;
+      }
+
+      .card-icon {
+        width: 88px;
+        height: 88px;
+        flex-shrink: 0;
+        margin: 0 auto 24px;
+      }
+
+      .card-heading {
+        color: #fff;
+        text-align: center;
+        font-family: Poppins, sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 127.89%;
+        margin: 0 0 16px 0;
+      }
+
+      .card-content {
+        color: #fff;
+        text-align: center;
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 112%;
+        margin: 0;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      @media (min-width: 768px) {
+        .cards-container {
+          flex-direction: row;
+          gap: 30px;
+          justify-content: center;
+        }
+
+        .card {
+          margin: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="main-heading">HVAC Rent-to-Own Program</h1>
+
+    <p class="description-text">
+      Complete the short form below to see if you qualify for our rent-to-own
+      program on scratch and dent heating and cooling equipment. We'll ask for
+      some basic information—like your name, contact details, and a few
+      income-related questions—to help determine eligibility. There's no credit
+      needed to apply, and no obligation.
+    </p>
+
+    <div class="button-container">
+      <a href="#" class="btn btn-outline">Shop Qualifying HVAC</a>
+      <a href="#" class="btn btn-filled">Apply Now</a>
+    </div>
+
+    <div class="cards-container">
+      <div class="card">
+        <div class="card-icon">
+          <img
+            src="./icons-forms-01.svg"
+            alt="No Credit Checks"
+            width="88"
+            height="88"
+          />
+        </div>
+        <h3 class="card-heading">No Credit Checks</h3>
+        <p class="card-content">
+          There's no credit needed to apply for the rent-to-own program.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">
+          <img
+            src="./icons-forms-02.svg"
+            alt="Flexible Payments"
+            width="88"
+            height="88"
+          />
+        </div>
+        <h3 class="card-heading">Flexible Payments</h3>
+        <p class="card-content">
+          Sign a rental agreement after determining which payment terms suit you
+          best.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">
+          <img
+            src="./icons-forms-03.svg"
+            alt="Obtain Ownership"
+            width="88"
+            height="88"
+          />
+        </div>
+        <h3 class="card-heading">Obtain Ownership</h3>
+        <p class="card-content">
+          After making the monthly payments on the contract term you will have
+          full ownership of the product.
+        </p>
+      </div>
+    </div>
+
+    <h2 class="main-heading">Apply to the Rent-to-Own Program</h2>
+
+    <p class="description-text">
+      Fill out the form to see if you're eligible for our Rent-to-Own HVAC
+      Program. We make it easy to spread out the cost of heating and cooling
+      equipment with flexible payment options. Once you apply, a representative
+      will reach out to review your eligibility and help build a payment plan
+      that works for your budget.
+    </p>
+  </body>
+</html>
