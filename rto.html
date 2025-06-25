@@ -88,17 +88,22 @@
       background: #ff822f;
     }
 
+
     .form {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      justify-self: center;
+    }
+
+    .step-icon {
+      display: flex;
+      justify-content: center;
     }
 
     .form-heading {
       color: #1e1e1e;
       text-align: center;
       font-family: "Poppins", sans-serif;
-
       font-size: 20px;
       font-style: normal;
       font-weight: 700;
@@ -106,34 +111,31 @@
     }
 
     .vertical-line {
-      width: 802px;
       height: 2px;
       background: #bfc9cd;
     }
 
     .form-section {
+      margin: 1.5rem 0;
       display: flex;
-      gap: 2rem;
-
+      gap: 1.5rem;
+      align-items: flex-start;
     }
 
     .section-header {
-      flex: 1;
+      flex: 0 0 200px;
       color: #4f6d7a;
       font-family: "Poppins", sans-serif;
       font-size: 18px;
-      font-style: normal;
       font-weight: 700;
       line-height: 127.89%;
-
     }
 
     .form-input {
-      flex: 2;
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      padding: 2rem 0;
     }
 
     label {
@@ -145,13 +147,29 @@
       line-height: 127.89%;
     }
 
-    input {
+    .required-star {
+      color: #CF2036;
+      font-family: Poppins;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 127.89%;
+    }
 
-      height: 50px;
-      padding-left: 1rem;
+    input[type="date"]::-webkit-datetime-edit {
+      color: #858585;
+    }
+
+    /* Firefox fallback */
+    input[type="date"] {
+      color: #858585;
+    }
+
+    input {
+      padding: 1rem;
       border-radius: 10px;
-      border: 1px solid #D9D9D9;
-      background: #FFF;
+      border: 1px solid #d9d9d9;
+      background: #fff;
     }
 
     input::placeholder {
@@ -162,37 +180,73 @@
       line-height: 127.89%;
     }
 
+
     .row {
       display: flex;
+      align-items: flex-start;
       gap: 1rem;
-      margin-top: 1rem;
-
+      margin: 0 0.5rem;
     }
 
     .row>div {
-      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
-    input[type="checkbox"] {
-      border-radius: 2px;
-      background: #4F6D7A;
+    .form-submit {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .checkbox-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      color: #1e1e1e;
+    }
+
+    .checkbox-wrapper input[type="checkbox"] {
       width: 18px;
       height: 18px;
+      margin-top: 3px;
+      accent-color: #4f6d7a;
+      border-radius: 2px;
+    }
+
+    .checkbox-wrapper label {
+      font-family: "Poppins", sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .checkbox-wrapper label small {
+      display: block;
+      font-size: 15px;
+      color: #858585;
+      font-family: "Poppins", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 127.89%;
+      margin-top: 0.25rem;
     }
 
     .form .btn-filled {
       border-radius: 15px;
-      background: #4F6D7A;
-      color: #FFF;
+      background: #4f6d7a;
+      color: #fff;
       text-align: center;
       font-family: "Poppins", sans-serif;
-
       font-size: 18px;
       font-style: normal;
       font-weight: 700;
       line-height: 127.89%;
+      padding: 1rem 0.5rem;
       align-self: center;
-
+      border: none;
+      cursor: pointer;
     }
 
     @media (min-width: 768px) {
@@ -260,7 +314,6 @@
       align-items: center;
       justify-content: center;
     }
-
 
     @media (min-width: 768px) {
       .cards-container {
@@ -339,59 +392,58 @@
     that works for your budget.
   </p>
 
-  <form class="form">
-    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-      <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
-      <text x="20" y="25" text-anchor="middle" fill="white" font-size="16" font-family="Poppins, sans-serif"
-        font-weight="600">
-        1
-      </text>
-    </svg>
+  <div class="form">
+    <div class="step-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
+        <text x="20" y="25" text-anchor="middle" fill="white" font-size="16" font-family="Poppins, sans-serif"
+          font-weight="600">1</text>
+      </svg>
+    </div>
     <h3 class="form-heading">Contact Details</h3>
     <div class="vertical-line"></div>
+
     <div class="form-section">
-      <h4 class="section-header">Personal Information</h4>
+      <div class="section-header">Personal Information</div>
       <div class="form-input">
-        <label for="fullName">Full Name</label>
+        <label for="fullName">Full Name<span class="required-star"> *</span></label>
         <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required />
-
-        <label for="dob">Date of Birth</label>
-        <input type="date" id="dob" name="dob" required />
-
-        <label for="license">Driver License Number</label>
+        <label for="dob">Date of Birth<span class="required-star"> *</span></label>
+        <input type="date" id="dob" name="dob" placeholder="MM/DD/YYYY" required />
+        <label for="license">Driver License Number<span class="required-star"> *</span></label>
         <input type="text" id="license" name="license" placeholder="Enter your full driver's license number" required />
       </div>
     </div>
     <div class="vertical-line"></div>
 
     <div class="form-section">
-      <h4 class="section-header">Contact Details</h4>
+      <div class="section-header">Contact Details</div>
       <div class="form-input">
-        <label for="email">Email Address</label>
+        <label for="email">Email Address<span class="required-star"> *</span></label>
         <input type="email" id="email" name="email" placeholder="sample@email.com" required />
-
-        <label for="phone">Phone Number</label>
+        <label for="phone">Phone Number<span class="required-star"> *</span></label>
         <input type="tel" id="phone" name="phone" placeholder="XXX-XXX-XXXX" required />
       </div>
     </div>
     <div class="vertical-line"></div>
 
     <div class="form-section">
-      <h4 class="section-header">Mailing Address</h4>
+      <div class="section-header">Mailing Address</div>
       <div class="form-input">
-        <label for="mailStreet">Street Address</label>
+        <label for="mailStreet">Street Address<span class="required-star"> *</span></label>
         <input type="text" id="mailStreet" name="mailStreet" placeholder="e.g. 123 Main St or 456 Elm Ave Apt 2B"
           required />
         <div class="row">
           <div>
-            <label for="mailCity">City</label>
+            <label for="mailCity">City<span class="required-star"> *</span></label>
             <input type="text" id="mailCity" name="mailCity" placeholder="City of residence" required />
           </div>
           <div>
-            <label for="mailState">State</label>
+            <label for="mailState">State<span class="required-star"> *</span></label>
             <input type="text" id="mailState" name="mailState" placeholder="XX" required />
           </div>
-          <div> <label for="mailZip">ZIP Code</label>
+          <div>
+            <label for="mailZip">ZIP Code<span class="required-star"> *</span></label>
             <input type="text" id="mailZip" name="mailZip" placeholder="5-digit ZIP code" required />
           </div>
         </div>
@@ -399,42 +451,44 @@
     </div>
 
     <div class="form-section">
-      <h4 class="section-header">Physical Address</h4>
+      <div class="section-header">Physical Address</div>
       <div class="form-input">
-        <label for="physStreet">Street Address</label>
+        <label for="physStreet">Street Address<span class="required-star"> *</span></label>
         <input type="text" id="physStreet" name="physStreet" placeholder="e.g. 123 Main St or 456 Elm Ave Apt 2B"
           required />
         <div class="row">
           <div>
-            <label for="physCity">City</label>
+            <label for="physCity">City<span class="required-star"> *</span></label>
             <input type="text" id="physCity" name="physCity" placeholder="City of residence" required />
           </div>
-          <div><label for="physState">State</label>
+          <div>
+            <label for="physState">State<span class="required-star"> *</span></label>
             <input type="text" id="physState" name="physState" placeholder="XX" required />
           </div>
-          <div> <label for="physZip">ZIP Code</label>
+          <div>
+            <label for="physZip">ZIP Code<span class="required-star"> *</span></label>
             <input type="text" id="physZip" name="physZip" placeholder="5-digit ZIP code" required />
           </div>
         </div>
       </div>
     </div>
-    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-      <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
-      <text x="20" y="25" text-anchor="middle" fill="white" font-size="16" font-family="Poppins, sans-serif"
-        font-weight="600">
-        2
-      </text>
-    </svg>
+    <div class="step-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
+        <text x="20" y="25" text-anchor="middle" fill="white" font-size="16" font-family="Poppins, sans-serif"
+          font-weight="600">2</text>
+      </svg>
+    </div>
     <h3 class="form-heading">Income & References</h3>
     <div class="vertical-line"></div>
+
     <div class="form-section">
-      <h4 class="section-header">Income Information</h4>
+      <div class="section-header">Income Information</div>
       <div class="form-input">
-        <label for="annualIncome">What is your estimated annual income?</label>
+        <label for="annualIncome">Estimated Annual Income<span class="required-star"> *</span></label>
         <input type="text" id="annualIncome" name="annualIncome"
           placeholder="Include income from all sources. An estimate is fine." required />
-
-        <label for="incomeSource">What is your primary source of income?</label>
+        <label for="incomeSource">Primary Source of Income<span class="required-star"> *</span></label>
         <input type="text" id="incomeSource" name="incomeSource" placeholder="Ex. employment, self-employment"
           required />
       </div>
@@ -442,47 +496,48 @@
     <div class="vertical-line"></div>
 
     <div class="form-section">
-      <h4 class="section-header">References</h4>
+      <div class="section-header">References</div>
       <div class="form-input">
-        <label for="reference1">Reference Name 1</label>
+        <label for="reference1">Reference Name 1<span class="required-star"> *</span></label>
         <input type="text" id="reference1" name="reference1" placeholder="Full Name of Reference" required />
-
-        <label for="referencephone1">Reference Phone Number 1</label>
+        <label for="referencephone1">Reference Phone Number 1<span class="required-star"> *</span></label>
         <input type="tel" id="referencephone1" name="referencephone1" placeholder="XXX-XXX-XXXX" required />
 
-        <label for="reference2">Reference Name 2</label>
+        <label for="reference2">Reference Name 2<span class="required-star"> *</span></label>
         <input type="text" id="reference2" name="reference2" placeholder="Full Name of Reference" required />
-
-        <label for="referencephone2">Reference Phone Number 2</label>
+        <label for="referencephone2">Reference Phone Number 2<span class="required-star"> *</span></label>
         <input type="tel" id="referencephone2" name="referencephone2" placeholder="XXX-XXX-XXXX" required />
-        <label for="reference3">Reference Name 3</label>
-        <input type="text" id="reference3" name="reference3" placeholder="Full Name of Reference" required />
 
-        <label for="referencephone3">Reference Phone Number 3</label>
+        <label for="reference3">Reference Name 3<span class="required-star"> *</span></label>
+        <input type="text" id="reference3" name="reference3" placeholder="Full Name of Reference" required />
+        <label for="referencephone3">Reference Phone Number 3<span class="required-star"> *</span></label>
         <input type="tel" id="referencephone3" name="referencephone3" placeholder="XXX-XXX-XXXX" required />
       </div>
     </div>
-    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-      <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
-      <text x="20" y="25" text-anchor="middle" fill="white" font-size="16" font-family="Poppins, sans-serif"
-        font-weight="600">
-        3
-      </text>
-    </svg>
+    <div class="step-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
+        <text x="20" y="25" text-anchor="middle" fill="white" font-size="16" font-family="Poppins, sans-serif"
+          font-weight="600">3</text>
+      </svg>
+    </div>
+
     <h3 class="form-heading">Confirmation</h3>
     <div class="vertical-line"></div>
-    <div class="form-input">
-      <label>
-        <input type="checkbox" name="newsletter" checked />
-        <strong>Yes, sign me up for the IWAE newsletter!</strong><br />
-        <small>
-          Get exclusive deals and be the first to know about new products,
-          promos, and more.
-        </small>
-      </label>
-      <button class="btn btn-filled"> Submit Application</button>
+
+    <div class="form-submit">
+      <div class="checkbox-wrapper">
+        <input type="checkbox" id="newsletter" name="newsletter" checked />
+        <label for="newsletter">
+          <strong>Yes, sign me up for the IWAE newsletter!</strong><br />
+          <small>Get exclusive deals and be the first to know about new products, promos, and more.</small>
+        </label>
+      </div>
+      <button class="btn btn-filled">Submit Application</button>
     </div>
-  </form>
+
+  </div>
+
 </body>
 
 </html>
