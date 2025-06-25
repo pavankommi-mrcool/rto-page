@@ -515,7 +515,8 @@
         <div> <input type="date" id="dob" name="dob" placeholder="MM/DD/YYYY" required />
 
         </div> <label for="license">Driver License Number<span class="required-star"> *</span></label>
-        <input type="text" id="license" name="license" placeholder="Enter your full driver's license number" required />
+        <input type="text" id="license" name="license" placeholder="Enter your full driver's license number"
+          pattern="^[A-Za-z0-9]{6,20}$" required title="6-20 alphanumeric characters" />
       </div>
     </div>
     <div class="vertical-line"></div>
@@ -527,7 +528,8 @@
         <input type="email" id="email" name="email" placeholder="sample@email.com" required />
 
         <label for="phone">Phone Number<span class="required-star"> *</span></label>
-        <div> <input type="tel" id="phone" name="phone" placeholder="XXX-XXX-XXXX" required />
+        <div> <input type="tel" id="phone" name="phone" pattern="^\d{3}-\d{3}-\d{4}$" placeholder="XXX-XXX-XXXX"
+            title="Format: 123-456-7890" required />
 
         </div>
       </div>
@@ -547,11 +549,13 @@
           </div>
           <div>
             <label for="mailState">State<span class="required-star"> *</span></label>
-            <input type="text" id="mailState" name="mailState" placeholder="XX" required />
+            <input type="text" id="mailState" name="mailState" placeholder="XX" minlength="2" pattern="^[A-Z]{2}$"
+              required title="Enter 2-letter state code (e.g., NY)" />
           </div>
           <div>
             <label for="mailZip">ZIP Code<span class="required-star"> *</span></label>
-            <input type="text" id="mailZip" name="mailZip" placeholder="5-digit ZIP code" required />
+            <input type="text" id="mailZip" name="mailZip" placeholder="5-digit ZIP code" minlength="5"
+              pattern="^\d{5}$" title="Enter a valid 5-digit ZIP code" required />
           </div>
         </div>
       </div>
@@ -570,11 +574,13 @@
           </div>
           <div>
             <label for="physState">State<span class="required-star"> *</span></label>
-            <input type="text" id="physState" name="physState" placeholder="XX" required />
+            <input type="text" id="physState" name="physState" placeholder="XX" minlength="2" pattern="^[A-Z]{2}$"
+              required title="Enter 2-letter state code (e.g., NY)" />
           </div>
           <div>
             <label for="physZip">ZIP Code<span class="required-star"> *</span></label>
-            <input type="text" id="physZip" name="physZip" placeholder="5-digit ZIP code" required />
+            <input type="text" id="physZip" name="physZip" placeholder="5-digit ZIP code" minlength="5"
+              pattern="^\d{5}$" title="Enter a valid 5-digit ZIP code" required />
           </div>
         </div>
       </div>
@@ -596,7 +602,8 @@
       <div class="form-input">
         <label for="annualIncome">Estimated Annual Income<span class="required-star"> *</span></label>
         <input type="text" id="annualIncome" name="annualIncome"
-          placeholder="Include income from all sources. An estimate is fine." required />
+          placeholder="Include income from all sources. An estimate is fine." required pattern="^\d+(\.\d+)?$"
+          title="Enter a valid number (e.g. 50000 or 50000.50)" />
         <label for="incomeSource">Primary Source of Income<span class="required-star"> *</span></label>
         <input type="text" id="incomeSource" name="incomeSource" placeholder="Ex. employment, self-employment"
           required />
@@ -671,8 +678,52 @@
 
 </html>
 <script>
+  function formatPhoneInput(input) {
+    input.addEventListener("input", (e) => {
+      const cursorPos = input.selectionStart;
+      let digits = input.value.replace(/\D/g, ""); // Strip non-digits
+
+      if (digits.length > 10) digits = digits.slice(0, 10); // Limit to 10 digits
+
+      let formatted = "";
+      if (digits.length > 6) {
+        formatted = `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
+      } else if (digits.length > 3) {
+        formatted = `${digits.slice(0, 3)}-${digits.slice(3)}`;
+      } else {
+        formatted = digits;
+      }
+
+      input.value = formatted;
+    });
+  }
+
+  formatPhoneInput(document.getElementById("phone"));
+  formatPhoneInput(document.getElementById("referencephone1"));
+  formatPhoneInput(document.getElementById("referencephone2"));
+  formatPhoneInput(document.getElementById("referencephone3"));
+  const dobInput = document.getElementById("dob");
+
+  const today = new Date();
+  const minAge = 18;
+  const yyyy = today.getFullYear() - minAge;
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+
+  const maxDate = `${yyyy}-${mm}-${dd}`;
+  dobInput.max = maxDate;
+
+
   document.getElementById('rtoForm').addEventListener('submit', function (e) {
     e.preventDefault(); // prevent actual submission
+    const acceptedStates = ["KY", "TN", "AR", "LA", "MO", "IN", "OH", "TX", "AZ"];
+    const mailState = document.getElementById("mailState").value.trim().toUpperCase();
+    const physState = document.getElementById("physState").value.trim().toUpperCase();
+
+    if (!acceptedStates.includes(mailState) || !acceptedStates.includes(physState)) {
+      alert("Sorry, we only accept applications from the following states:\nKY, TN, AR, LA, MO, IN, OH, TX, AZ.");
+      return;
+    }
 
     // Hide form with animation
     const form = document.getElementById('rtoForm');
