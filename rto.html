@@ -7,15 +7,14 @@
   <title>HVAC Rent-to-Own Program</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      margin: 0;
-      padding: 20px;
-      background-color: #f5f5f5;
-    }
-
     .main-banner {
-      display: flex;
-      justify-content: center;
+      aspect-ratio: 1174/243;
+      max-width: 1174px;
+      max-height: 243px;
+      margin: 0 auto;
+      background-image: url('./rto-header-3.jpg');
+      background-size: cover;
+      background-position: center;
     }
 
     .main-heading {
@@ -26,7 +25,6 @@
       font-style: normal;
       font-weight: 700;
       line-height: normal;
-      margin: 40px 0;
     }
 
     .description-text {
@@ -69,14 +67,14 @@
       border: 2px solid #4f6d7a;
       background: transparent;
       color: #4f6d7a;
-      order: 2;
+      order: 1;
     }
 
     .btn-filled {
       border: none;
       background: #4f6d7a;
       color: #fff;
-      order: 1;
+      order: 2;
     }
 
     .btn-outline:hover {
@@ -88,16 +86,77 @@
       background: #ff822f;
     }
 
+    .cards-container {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      border-radius: 20px;
+      background: #2f3b48;
+      padding: 40px 30px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      width: 277px;
+      height: 316px;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      margin: 0;
+
+    }
+
+    .card-icon {
+      width: 88px;
+      height: 88px;
+      flex-shrink: 0;
+      margin: 0 auto 24px;
+    }
+
+    .card-heading {
+      color: #fff;
+      text-align: center;
+      font-family: Poppins, sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 127.89%;
+      margin: 0 0 16px 0;
+    }
+
+    .card-content {
+      color: #fff;
+      text-align: center;
+      font-family: Poppins, sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 112%;
+      margin: 0;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     .form {
       display: flex;
       flex-direction: column;
-      justify-self: center;
+      justify-content: center;
+      max-width: 768px;
+      margin: auto;
+      margin-bottom: 1rem;
     }
 
-    .step-icon {
+    .form-heading-wrapper {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
     }
 
     .form-heading {
@@ -113,28 +172,34 @@
     .vertical-line {
       height: 2px;
       background: #bfc9cd;
+
     }
 
     .form-section {
-      margin: 1.5rem 0;
+
       display: flex;
+      justify-content: center;
       gap: 1.5rem;
-      align-items: flex-start;
+      margin: 1.5rem 0 1.5rem 3rem;
+
     }
 
     .section-header {
-      flex: 0 0 200px;
+      flex: 1;
       color: #4f6d7a;
       font-family: "Poppins", sans-serif;
       font-size: 18px;
       font-weight: 700;
       line-height: 127.89%;
+      margin-bottom: 1rem;
+      margin-left: 2rem;
     }
 
     .form-input {
-      flex-grow: 1;
+      flex: 2;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       gap: 1rem;
     }
 
@@ -149,7 +214,7 @@
 
     .required-star {
       color: #CF2036;
-      font-family: Poppins;
+      font-family: "Poppins", sans-serif;
       font-size: 16px;
       font-style: normal;
       font-weight: 600;
@@ -181,16 +246,34 @@
     }
 
 
+
     .row {
       display: flex;
       align-items: flex-start;
       gap: 1rem;
-      margin: 0 0.5rem;
+      margin: 1rem 0.5rem;
+      flex-wrap: wrap;
     }
 
     .row>div {
       display: flex;
       flex-direction: column;
+    }
+
+    .row>div:has(input[id*="City"]) {
+      flex: 2;
+      max-width: 161px;
+
+    }
+
+    .row>div:has(input[id*="State"]) {
+      flex: 0.5;
+      max-width: 63px;
+    }
+
+    .row>div:has(input[id*="Zip"]) {
+      flex: 1;
+      max-width: 161px;
     }
 
     .form-submit {
@@ -199,6 +282,8 @@
       gap: 2rem;
       align-items: center;
       margin-top: 2rem;
+      margin-left: 2rem;
+
     }
 
     .checkbox-wrapper {
@@ -249,90 +334,103 @@
       cursor: pointer;
     }
 
-    @media (min-width: 768px) {
+
+
+    .form-submitted {
+      align-content: center;
+      max-width: 886px;
+      max-height: 500px;
+      background-color: #BFC9CD69;
+      border-radius: 20px;
+      margin: auto;
+      margin-bottom: 2rem;
+      display: none;
+    }
+
+
+    @media (min-width: 767px) {
+
+
+      input[id="mailStreet"],
+      input[id="physStreet"] {
+        width: 85%;
+      }
+
+      input[id="incomeSource"],
+      input[id="annualIncome"] {
+        width: 75%;
+      }
+
+      input[id="fullName"],
+      input[id="email"],
+      input[id="license"],
+      input[id="reference1"],
+      input[id="reference2"],
+      input[id="reference3"] {
+        width: 50%;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .main-banner {
+        aspect-ratio: 81/41;
+        background-image: url('./rto-mobile-header.jpg');
+
+      }
+
       .btn-outline {
-        order: 1;
+        order: 2;
       }
 
       .btn-filled {
-        order: 2;
+        order: 1;
       }
-    }
 
-    .cards-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      max-width: 1200px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-
-    .card {
-      border-radius: 20px;
-      background: #2f3b48;
-      padding: 40px 30px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      width: 277px;
-      height: 316px;
-      flex-shrink: 0;
-      box-sizing: border-box;
-      margin: 0 auto;
-    }
-
-    .card-icon {
-      width: 88px;
-      height: 88px;
-      flex-shrink: 0;
-      margin: 0 auto 24px;
-    }
-
-    .card-heading {
-      color: #fff;
-      text-align: center;
-      font-family: Poppins, sans-serif;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 127.89%;
-      margin: 0 0 16px 0;
-    }
-
-    .card-content {
-      color: #fff;
-      text-align: center;
-      font-family: Poppins, sans-serif;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 112%;
-      margin: 0;
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    @media (min-width: 768px) {
       .cards-container {
-        flex-direction: row;
-        gap: 30px;
-        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
       }
 
       .card {
-        margin: 0;
+        margin: 0 auto;
+      }
+
+      .form-heading {
+        text-align: left;
+        margin: auto;
+        margin-left: 0;
+      }
+
+      .form-heading-wrapper {
+        flex-direction: row;
+        gap: 2rem;
+        margin-left: 1rem;
+      }
+
+      .confirmation-wrapper {
+        margin-top: 1rem;
+      }
+
+      .section-header {
+        margin: 1rem 0;
+      }
+
+      .vertical-line {
+        display: none;
+      }
+
+      .form-section {
+        display: block;
+        margin: 0 2rem;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="main-banner">
-    <img src="./rto-header-3.jpg" alt="Heat & Cool Now Pay Over Time" width="1174" height="243" />
-  </div>
+
+  <div class="main-banner"></div>
+
   <h1 class="main-heading">HVAC Rent-to-Own Program</h1>
 
   <p class="description-text">
@@ -392,15 +490,19 @@
     that works for your budget.
   </p>
 
-  <div class="form">
-    <div class="step-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
-        <text x="20" y="25" text-anchor="middle" fill="white" font-size="16" font-family="Poppins, sans-serif"
-          font-weight="600">1</text>
-      </svg>
+
+  <form class="form" id="rtoForm">
+    <div class="form-heading-wrapper">
+      <div class="step-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
+          <text x="20" y="25" text-anchor="middle" fill="white" font-size="16" font-family="Poppins, sans-serif"
+            font-weight="600">1</text>
+        </svg>
+      </div>
+      <h3 class="form-heading">Contact Details</h3>
     </div>
-    <h3 class="form-heading">Contact Details</h3>
+
     <div class="vertical-line"></div>
 
     <div class="form-section">
@@ -408,9 +510,11 @@
       <div class="form-input">
         <label for="fullName">Full Name<span class="required-star"> *</span></label>
         <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required />
+
         <label for="dob">Date of Birth<span class="required-star"> *</span></label>
-        <input type="date" id="dob" name="dob" placeholder="MM/DD/YYYY" required />
-        <label for="license">Driver License Number<span class="required-star"> *</span></label>
+        <div> <input type="date" id="dob" name="dob" placeholder="MM/DD/YYYY" required />
+
+        </div> <label for="license">Driver License Number<span class="required-star"> *</span></label>
         <input type="text" id="license" name="license" placeholder="Enter your full driver's license number" required />
       </div>
     </div>
@@ -421,8 +525,11 @@
       <div class="form-input">
         <label for="email">Email Address<span class="required-star"> *</span></label>
         <input type="email" id="email" name="email" placeholder="sample@email.com" required />
+
         <label for="phone">Phone Number<span class="required-star"> *</span></label>
-        <input type="tel" id="phone" name="phone" placeholder="XXX-XXX-XXXX" required />
+        <div> <input type="tel" id="phone" name="phone" placeholder="XXX-XXX-XXXX" required />
+
+        </div>
       </div>
     </div>
     <div class="vertical-line"></div>
@@ -472,14 +579,16 @@
         </div>
       </div>
     </div>
-    <div class="step-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
-        <text x="20" y="25" text-anchor="middle" fill="white" font-size="16" font-family="Poppins, sans-serif"
-          font-weight="600">2</text>
-      </svg>
+    <div class="form-heading-wrapper">
+      <div class="step-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
+          <text x="20" y="25" text-anchor="middle" fill="white" font-size="16" font-family="Poppins, sans-serif"
+            font-weight="600">2</text>
+        </svg>
+      </div>
+      <h3 class="form-heading">Income & References</h3>
     </div>
-    <h3 class="form-heading">Income & References</h3>
     <div class="vertical-line"></div>
 
     <div class="form-section">
@@ -500,29 +609,40 @@
       <div class="form-input">
         <label for="reference1">Reference Name 1<span class="required-star"> *</span></label>
         <input type="text" id="reference1" name="reference1" placeholder="Full Name of Reference" required />
-        <label for="referencephone1">Reference Phone Number 1<span class="required-star"> *</span></label>
-        <input type="tel" id="referencephone1" name="referencephone1" placeholder="XXX-XXX-XXXX" required />
 
+        <label for="referencephone1">Reference Phone Number 1<span class="required-star"> *</span></label>
+        <div>
+          <input type="tel" id="referencephone1" name="referencephone1" placeholder="XXX-XXX-XXXX" required />
+
+        </div>
         <label for="reference2">Reference Name 2<span class="required-star"> *</span></label>
         <input type="text" id="reference2" name="reference2" placeholder="Full Name of Reference" required />
         <label for="referencephone2">Reference Phone Number 2<span class="required-star"> *</span></label>
-        <input type="tel" id="referencephone2" name="referencephone2" placeholder="XXX-XXX-XXXX" required />
+        <div>
+          <input type="tel" id="referencephone2" name="referencephone2" placeholder="XXX-XXX-XXXX" required />
 
+        </div>
         <label for="reference3">Reference Name 3<span class="required-star"> *</span></label>
         <input type="text" id="reference3" name="reference3" placeholder="Full Name of Reference" required />
         <label for="referencephone3">Reference Phone Number 3<span class="required-star"> *</span></label>
-        <input type="tel" id="referencephone3" name="referencephone3" placeholder="XXX-XXX-XXXX" required />
+        <div>
+          <input type="tel" id="referencephone3" name="referencephone3" placeholder="XXX-XXX-XXXX" required />
+        </div>
       </div>
     </div>
-    <div class="step-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
-        <text x="20" y="25" text-anchor="middle" fill="white" font-size="16" font-family="Poppins, sans-serif"
-          font-weight="600">3</text>
-      </svg>
-    </div>
 
-    <h3 class="form-heading">Confirmation</h3>
+    <div class="form-heading-wrapper confirmation-wrapper">
+      <div class="step-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
+
+          <text x="20" y="25" text-anchor="middle" fill="white" font-size="16" font-family="Poppins, sans-serif"
+            font-weight="600">3</text>
+        </svg>
+      </div>
+
+      <h3 class="form-heading">Confirmation</h3>
+    </div>
     <div class="vertical-line"></div>
 
     <div class="form-submit">
@@ -533,11 +653,44 @@
           <small>Get exclusive deals and be the first to know about new products, promos, and more.</small>
         </label>
       </div>
-      <button class="btn btn-filled">Submit Application</button>
+      <button type="submit" class="btn btn-filled">Submit Application</button>
     </div>
 
+  </form>
+
+  <div class="form-submitted" aria-live="polite">
+    <h2 class="main-heading">Thank You for Your Application!</h2>
+
+    <p class="description-text">
+      We've received your information, and a copy of your submission has been sent to your email. A representative from
+      IWAE will contact you shortly to confirm your eligibility and walk you through the next steps.
+    </p>
   </div>
 
 </body>
 
 </html>
+<script>
+  document.getElementById('rtoForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // prevent actual submission
+
+    // Hide form with animation
+    const form = document.getElementById('rtoForm');
+    const confirmation = document.querySelector('.form-submitted');
+
+    form.style.transition = 'opacity 0.3s ease-out';
+    form.style.opacity = '0';
+
+    setTimeout(() => {
+      form.style.display = 'none';
+      confirmation.style.display = 'block';
+      confirmation.style.opacity = '0';
+      confirmation.style.transition = 'opacity 0.3s ease-in';
+
+      // Force a reflow
+      confirmation.offsetHeight;
+
+      confirmation.style.opacity = '1';
+    }, 300);
+  });
+</script>
