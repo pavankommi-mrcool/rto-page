@@ -19,7 +19,7 @@
       max-width: 1174px;
       max-height: 243px;
       margin: 0 auto;
-      background-image: url('./rto-header-3.jpg');
+      background-image: url("{{media url=wysiwyg/rto-header-3.jpg}}");
       background-size: cover;
       background-position: center;
     }
@@ -229,20 +229,55 @@
       line-height: 127.89%;
     }
 
-    .rtoProgram input[type="date"]::-webkit-datetime-edit {
-      color: #858585;
+    .input-text.datepicker {
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid #d9d9d9;
+      background: #fff;
+      font-size: 14px;
+      font-style: normal;
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      line-height: 127.89%;
     }
 
-    /* Firefox fallback */
-    .rtoProgram input[type="date"] {
-      color: #858585;
+    .ui-datepicker .ui-datepicker-title select {
+      padding-left: 0.45rem;
     }
+
+    .ui-datepicker .ui-datepicker-title {
+      margin: 0 2em;
+    }
+
+    .input-text.datepicker::placeholder {
+      color: #858585;
+      font-size: 14px;
+      font-style: normal;
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      line-height: 127.89%;
+    }
+
 
     .rtoProgram input {
       padding: 1rem;
       border-radius: 10px;
       border: 1px solid #d9d9d9;
       background: #fff;
+    }
+
+    .rtoProgram input[type="text"] {
+      font-size: 14px;
+      font-style: normal;
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      line-height: 127.89%;
+    }
+
+    .rtoProgram input:focus {
+      border: 2px solid #2F3B48;
+      box-shadow: 0 0 6px rgba(47, 59, 72, 0.3);
+      background-color: #f9fbfd;
     }
 
     .rtoProgram input::placeholder {
@@ -270,7 +305,7 @@
     }
 
     .rtoProgram .row>div:has(input[id*="City"]) {
-      flex: 2;
+      flex: 1;
       max-width: 161px;
 
     }
@@ -344,6 +379,9 @@
     }
 
 
+    #applyNow {
+      scroll-margin-top: 12rem;
+    }
 
     .rtoProgram .form-submitted {
       align-content: center;
@@ -351,14 +389,20 @@
       max-height: 500px;
       background-color: #BFC9CD69;
       border-radius: 20px;
-      margin: auto;
-      margin-bottom: 2rem;
+      margin: 2rem auto;
       display: none;
     }
 
 
     @media (min-width: 767px) {
 
+      .rtoProgram input[id="dob"],
+      .rtoProgram input[id="phone"],
+      .rtoProgram input[id="referencephone1"],
+      .rtoProgram input[id="referencephone2"],
+      .rtoProgram input[id="referencephone3"] {
+        width: 30%;
+      }
 
       .rtoProgram input[id="mailStreet"],
       .rtoProgram input[id="physStreet"] {
@@ -378,20 +422,12 @@
       .rtoProgram input[id="reference3"] {
         width: 50%;
       }
-
-      .rtoProgram input[id="dob"],
-      .rtoProgram input[id="phone"],
-      .rtoProgram input[id="referencephone1"],
-      .rtoProgram input[id="referencephone2"],
-      .rtoProgram input[id="referencephone3"] {
-        width: 25%;
-      }
     }
 
     @media (max-width: 767px) {
       .rtoProgram .main-banner {
         aspect-ratio: 81/41;
-        background-image: url('./rto-mobile-header.jpg');
+        background-image: url("{{media url=wysiwyg/formbanner_mobile.jpg}}");
 
       }
 
@@ -440,6 +476,7 @@
         display: block;
         margin: 0 2rem;
       }
+
     }
   </style>
 </head>
@@ -459,8 +496,10 @@
     </p>
 
     <div class="button-container">
-      <a href="#" class="btn btn-outline">Shop Qualifying HVAC</a>
-      <a href="#" class="btn btn-filled">Apply Now</a>
+      <a href='{{config path="web/unsecure/base_url"}}promo/mrcool-diy' class="btn btn-outline" data-promotion="true"
+        data-promotion-creative="rentToOwn" data-promotion-name="Rent To Own" data-promotion-position="rentToOwn"
+        data-promotion-id="Rent-To-Own">Shop Qualifying
+        HVAC</a> <a href="#applyNow" class="btn btn-filled">Apply Now</a>
     </div>
 
     <div class="cards-container">
@@ -545,7 +584,7 @@
       </div>
     </div>
 
-    <h2 class="main-heading">Apply to the Rent-to-Own Program</h2>
+    <h2 id="applyNow" class="main-heading">Apply to the Rent-to-Own Program</h2>
 
     <p class="description-text">
       Fill out the form to see if you're eligible for our Rent-to-Own HVAC
@@ -577,7 +616,8 @@
           <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required />
 
           <label for="dob">Date of Birth<span class="required-star"> *</span></label>
-          <div> <input type="date" id="dob" name="dob" placeholder="MM/DD/YYYY" required />
+          <div>
+            <input type="text" name="dob" id="dob" class="input-text datepicker" placeholder="MM/DD/YYYY" />
 
           </div> <label for="license">Driver License Number<span class="required-star"> *</span></label>
           <input type="text" id="license" name="license" placeholder="Enter your full driver's license number"
@@ -743,75 +783,61 @@
 </body>
 
 </html>
-<script>
-  function formatPhoneInput(input) {
-    input.addEventListener("input", (e) => {
-      const cursorPos = input.selectionStart;
-      let digits = input.value.replace(/\D/g, ""); // Strip non-digits
+<script type="text/javascript">
 
-      if (digits.length > 10) digits = digits.slice(0, 10); // Limit to 10 digits
+  require(['jquery', 'mage/calendar'], function ($) {
+    function formatPhoneInput($input) {
+      $input.on('input', function () {
+        const input = this;
+        let digits = input.value.replace(/\D/g, ""); // Strip non-digits
+        if (digits.length > 10) digits = digits.slice(0, 10); // Limit to 10 digits
 
-      let formatted = "";
-      if (digits.length > 6) {
-        formatted = `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
-      } else if (digits.length > 3) {
-        formatted = `${digits.slice(0, 3)}-${digits.slice(3)}`;
-      } else {
-        formatted = digits;
-      }
+        let formatted = "";
+        if (digits.length > 6) {
+          formatted = `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
+        } else if (digits.length > 3) {
+          formatted = `${digits.slice(0, 3)}-${digits.slice(3)}`;
+        } else {
+          formatted = digits;
+        }
 
-      input.value = formatted;
+        input.value = formatted;
+      });
+    }
+
+    $(document).ready(function () {
+      formatPhoneInput($('#phone'));
+      formatPhoneInput($('#referencephone1'));
+      formatPhoneInput($('#referencephone2'));
+      formatPhoneInput($('#referencephone3'));
+
+      $('#dob').datepicker({
+        dateFormat: 'mm/dd/yy',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '-100:+0',
+        maxDate: '-18Y'
+      });
+
+      $('#rtoForm').on('submit', function (e) {
+        e.preventDefault();
+
+        const acceptedStates = ["KY", "TN", "AR", "LA", "MO", "IN", "OH", "TX", "AZ"];
+        const mailState = $.trim($('#mailState').val().toUpperCase());
+        const physState = $.trim($('#physState').val().toUpperCase());
+
+        if (!acceptedStates.includes(mailState) || !acceptedStates.includes(physState)) {
+          alert("Sorry, we only accept applications from the following states:\nKY, TN, AR, LA, MO, IN, OH, TX, AZ.");
+          return;
+        }
+
+        const $form = $('#rtoForm');
+        const $confirmation = $('.form-submitted');
+
+        $form.fadeOut(300, function () {
+          $confirmation.css({ display: 'block', opacity: 0 }).animate({ opacity: 1 }, 300);
+        });
+      });
     });
-  }
-
-  formatPhoneInput(document.getElementById("phone"));
-  formatPhoneInput(document.getElementById("referencephone1"));
-  formatPhoneInput(document.getElementById("referencephone2"));
-  formatPhoneInput(document.getElementById("referencephone3"));
-  const dobInput = document.getElementById("dob");
-
-  const today = new Date();
-  const minAge = 18;
-  const yyyy = today.getFullYear() - minAge;
-  const mm = String(today.getMonth() + 1).padStart(2, '0');
-  const dd = String(today.getDate()).padStart(2, '0');
-
-  const maxDate = `${yyyy}-${mm}-${dd}`;
-  dobInput.max = maxDate;
-  dobInput.addEventListener("click", () => {
-    if (dobInput.showPicker) {
-      dobInput.showPicker();
-    }
-  });
-
-  document.getElementById('rtoForm').addEventListener('submit', function (e) {
-    e.preventDefault(); // prevent actual submission
-    const acceptedStates = ["KY", "TN", "AR", "LA", "MO", "IN", "OH", "TX", "AZ"];
-    const mailState = document.getElementById("mailState").value.trim().toUpperCase();
-    const physState = document.getElementById("physState").value.trim().toUpperCase();
-
-    if (!acceptedStates.includes(mailState) || !acceptedStates.includes(physState)) {
-      alert("Sorry, we only accept applications from the following states:\nKY, TN, AR, LA, MO, IN, OH, TX, AZ.");
-      return;
-    }
-
-    // Hide form with animation
-    const form = document.getElementById('rtoForm');
-    const confirmation = document.querySelector('.form-submitted');
-
-    form.style.transition = 'opacity 0.3s ease-out';
-    form.style.opacity = '0';
-
-    setTimeout(() => {
-      form.style.display = 'none';
-      confirmation.style.display = 'block';
-      confirmation.style.opacity = '0';
-      confirmation.style.transition = 'opacity 0.3s ease-in';
-
-      // Force a reflow
-      confirmation.offsetHeight;
-
-      confirmation.style.opacity = '1';
-    }, 300);
   });
 </script>

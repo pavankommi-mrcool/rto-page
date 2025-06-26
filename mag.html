@@ -108,7 +108,6 @@
         flex-shrink: 0;
         box-sizing: border-box;
         margin: 0;
-
     }
 
     .rtoProgram .card-icon {
@@ -172,16 +171,13 @@
     .rtoProgram .vertical-line {
         height: 2px;
         background: #bfc9cd;
-
     }
 
     .rtoProgram .form-section {
-
         display: flex;
         justify-content: center;
         gap: 1.5rem;
         margin: 1.5rem 0 1.5rem 3rem;
-
     }
 
     .rtoProgram .section-header {
@@ -221,13 +217,33 @@
         line-height: 127.89%;
     }
 
-    .rtoProgram input[type="date"]::-webkit-datetime-edit {
-        color: #858585;
+    .input-text.datepicker {
+        padding: 1rem;
+        border-radius: 10px;
+        border: 1px solid #d9d9d9;
+        background: #fff;
+        font-size: 14px;
+        font-style: normal;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        line-height: 127.89%;
     }
 
-    /* Firefox fallback */
-    .rtoProgram input[type="date"] {
+    .ui-datepicker .ui-datepicker-title select {
+        padding-left: 0.45rem;
+    }
+
+    .ui-datepicker .ui-datepicker-title {
+        margin: 0 2em;
+    }
+
+    .input-text.datepicker::placeholder {
         color: #858585;
+        font-size: 14px;
+        font-style: normal;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        line-height: 127.89%;
     }
 
     .rtoProgram input {
@@ -235,6 +251,22 @@
         border-radius: 10px;
         border: 1px solid #d9d9d9;
         background: #fff;
+        font-size: 14px;
+        font-style: normal;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        line-height: 127.89%;
+    }
+
+    /* .rtoProgram input[type="text"] {
+
+    } */
+
+    .rtoProgram input:focus {
+        color: #000000;
+        border: 2px solid #2F3B48;
+        box-shadow: 0 0 6px rgba(47, 59, 72, 0.3);
+        background-color: #f9fbfd;
     }
 
     .rtoProgram input::placeholder {
@@ -245,8 +277,6 @@
         font-weight: 400;
         line-height: 127.89%;
     }
-
-
 
     .rtoProgram .row {
         display: flex;
@@ -262,9 +292,8 @@
     }
 
     .rtoProgram .row>div:has(input[id*="City"]) {
-        flex: 2;
+        flex: 1;
         max-width: 161px;
-
     }
 
     .rtoProgram .row>div:has(input[id*="State"]) {
@@ -284,7 +313,6 @@
         align-items: center;
         margin-top: 2rem;
         margin-left: 2rem;
-
     }
 
     .rtoProgram .checkbox-wrapper {
@@ -335,7 +363,9 @@
         cursor: pointer;
     }
 
-
+    #applyNow {
+        scroll-margin-top: 12rem;
+    }
 
     .rtoProgram .form-submitted {
         align-content: center;
@@ -343,11 +373,9 @@
         max-height: 500px;
         background-color: #BFC9CD69;
         border-radius: 20px;
-        margin: auto;
-        margin-bottom: 2rem;
+        margin: 2rem auto;
         display: none;
     }
-
 
     @media (min-width: 767px) {
 
@@ -356,7 +384,7 @@
         .rtoProgram input[id="referencephone1"],
         .rtoProgram input[id="referencephone2"],
         .rtoProgram input[id="referencephone3"] {
-            width: 25%;
+            width: 30%;
         }
 
         .rtoProgram input[id="mailStreet"],
@@ -383,7 +411,6 @@
         .rtoProgram .main-banner {
             aspect-ratio: 81/41;
             background-image: url("{{media url=wysiwyg/formbanner_mobile.jpg}}");
-
         }
 
         .rtoProgram .btn-outline {
@@ -435,9 +462,7 @@
 </style>
 <div class="rtoProgram">
     <div class="main-banner"></div>
-
     <h1 class="main-heading">HVAC Rent-to-Own Program</h1>
-
     <p class="description-text">
         Complete the short form below to see if you qualify for our rent-to-own
         program on scratch and dent heating and cooling equipment. We'll ask for
@@ -445,12 +470,11 @@
         income-related questions—to help determine eligibility. There's no credit
         needed to apply, and no obligation.
     </p>
-
     <div class="button-container">
-        <a href="#" class="btn btn-outline">Shop Qualifying HVAC</a>
-        <a href="#" class="btn btn-filled">Apply Now</a>
+        <a href='{{config path="web/unsecure/base_url"}}outlet/' class="btn btn-outline">Shop Qualifying
+            HVAC</a>
+        <a href="#applyNow" class="btn btn-filled">Apply Now</a>
     </div>
-
     <div class="cards-container">
         <div class="card">
             <div class="card-icon">
@@ -468,7 +492,6 @@
                 There's no credit needed to apply for the rent-to-own program.
             </p>
         </div>
-
         <div class="card">
             <div class="card-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="88" height="88" viewBox="0 0 88 88" fill="none">
@@ -495,7 +518,6 @@
                 best.
             </p>
         </div>
-
         <div class="card">
             <div class="card-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="88" height="88" viewBox="0 0 88 88" fill="none">
@@ -532,9 +554,7 @@
             </p>
         </div>
     </div>
-
-    <h2 class="main-heading">Apply to the Rent-to-Own Program</h2>
-
+    <h2 id="applyNow" class="main-heading">Apply to the Rent-to-Own Program</h2>
     <p class="description-text">
         Fill out the form to see if you're eligible for our Rent-to-Own HVAC
         Program. We make it easy to spread out the cost of heating and cooling
@@ -542,9 +562,7 @@
         will reach out to review your eligibility and help build a payment plan
         that works for your budget.
     </p>
-
-
-    <form class="form" id="rtoForm">
+    <form class="form" id="rtoForm" method="POST" action="https://formsubmit.co/pavankommi0503@gmail.com">
         <div class="form-heading-wrapper">
             <div class="step-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -555,40 +573,33 @@
             </div>
             <h3 class="form-heading">Contact Details</h3>
         </div>
-
         <div class="vertical-line"></div>
-
         <div class="form-section">
             <div class="section-header">Personal Information</div>
             <div class="form-input">
                 <label for="fullName">Full Name<span class="required-star"> *</span></label>
                 <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required />
-
                 <label for="dob">Date of Birth<span class="required-star"> *</span></label>
-                <div> <input type="date" id="dob" name="dob" placeholder="MM/DD/YYYY" required />
-
+                <div>
+                    <input type="text" name="dob" id="dob" class="input-text datepicker" placeholder="MM/DD/YYYY" />
                 </div> <label for="license">Driver License Number<span class="required-star"> *</span></label>
                 <input type="text" id="license" name="license" placeholder="Enter your full driver's license number"
                     pattern="^[A-Za-z0-9]{6,20}$" required title="6-20 alphanumeric characters" />
             </div>
         </div>
         <div class="vertical-line"></div>
-
         <div class="form-section">
             <div class="section-header">Contact Details</div>
             <div class="form-input">
                 <label for="email">Email Address<span class="required-star"> *</span></label>
                 <input type="email" id="email" name="email" placeholder="sample@email.com" required />
-
                 <label for="phone">Phone Number<span class="required-star"> *</span></label>
                 <div> <input type="tel" id="phone" name="phone" pattern="^\d{3}-\d{3}-\d{4}$" placeholder="XXX-XXX-XXXX"
                         title="Format: 123-456-7890" required />
-
                 </div>
             </div>
         </div>
         <div class="vertical-line"></div>
-
         <div class="form-section">
             <div class="section-header">Mailing Address</div>
             <div class="form-input">
@@ -613,7 +624,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-section">
             <div class="section-header">Physical Address</div>
             <div class="form-input">
@@ -649,7 +659,6 @@
             <h3 class="form-heading">Income & References</h3>
         </div>
         <div class="vertical-line"></div>
-
         <div class="form-section">
             <div class="section-header">Income Information</div>
             <div class="form-input">
@@ -663,24 +672,20 @@
             </div>
         </div>
         <div class="vertical-line"></div>
-
         <div class="form-section">
             <div class="section-header">References</div>
             <div class="form-input">
                 <label for="reference1">Reference Name 1<span class="required-star"> *</span></label>
                 <input type="text" id="reference1" name="reference1" placeholder="Full Name of Reference" required />
-
                 <label for="referencephone1">Reference Phone Number 1<span class="required-star"> *</span></label>
                 <div>
                     <input type="tel" id="referencephone1" name="referencephone1" placeholder="XXX-XXX-XXXX" required />
-
                 </div>
                 <label for="reference2">Reference Name 2<span class="required-star"> *</span></label>
                 <input type="text" id="reference2" name="reference2" placeholder="Full Name of Reference" required />
                 <label for="referencephone2">Reference Phone Number 2<span class="required-star"> *</span></label>
                 <div>
                     <input type="tel" id="referencephone2" name="referencephone2" placeholder="XXX-XXX-XXXX" required />
-
                 </div>
                 <label for="reference3">Reference Name 3<span class="required-star"> *</span></label>
                 <input type="text" id="reference3" name="reference3" placeholder="Full Name of Reference" required />
@@ -690,21 +695,17 @@
                 </div>
             </div>
         </div>
-
         <div class="form-heading-wrapper confirmation-wrapper">
             <div class="step-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
                     <circle cx="20" cy="20" r="20" fill="#4F6D7A" />
-
                     <text x="20" y="25" text-anchor="middle" fill="white" font-size="16"
                         font-family="Poppins, sans-serif" font-weight="600">3</text>
                 </svg>
             </div>
-
             <h3 class="form-heading">Confirmation</h3>
         </div>
         <div class="vertical-line"></div>
-
         <div class="form-submit">
             <div class="checkbox-wrapper">
                 <input type="checkbox" id="newsletter" name="newsletter" checked />
@@ -715,12 +716,9 @@
             </div>
             <button type="submit" class="btn btn-filled">Submit Application</button>
         </div>
-
     </form>
-
     <div class="form-submitted" aria-live="polite">
         <h2 class="main-heading">Thank You for Your Application!</h2>
-
         <p class="description-text">
             We've received your information, and a copy of your submission has been sent to your email. A representative
             from
@@ -729,14 +727,12 @@
     </div>
 </div>
 <script type="text/javascript">
-
-    require(['jquery'], function ($) {
+    require(['jquery', 'mage/calendar'], function ($) {
         function formatPhoneInput($input) {
             $input.on('input', function () {
                 const input = this;
-                let digits = input.value.replace(/\D/g, ""); // Strip non-digits
-                if (digits.length > 10) digits = digits.slice(0, 10); // Limit to 10 digits
-
+                let digits = input.value.replace(/\D/g, "");
+                if (digits.length > 10) digits = digits.slice(0, 10);
                 let formatted = "";
                 if (digits.length > 6) {
                     formatted = `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
@@ -745,46 +741,37 @@
                 } else {
                     formatted = digits;
                 }
-
                 input.value = formatted;
             });
         }
-
         $(document).ready(function () {
             formatPhoneInput($('#phone'));
             formatPhoneInput($('#referencephone1'));
             formatPhoneInput($('#referencephone2'));
             formatPhoneInput($('#referencephone3'));
-
-            const today = new Date();
-            const minAge = 18;
-            const yyyy = today.getFullYear() - minAge;
-            const mm = String(today.getMonth() + 1).padStart(2, '0');
-            const dd = String(today.getDate()).padStart(2, '0');
-            const maxDate = `${yyyy}-${mm}-${dd}`;
-            $('#dob').attr('max', maxDate);
-            $('#dob').on("click", function () {
-                if (this.showPicker) {
-                    this.showPicker();
-                }
+            $('#dob').datepicker({
+                dateFormat: 'mm/dd/yy',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '-100:+0',
+                maxDate: '-18Y'
             });
             $('#rtoForm').on('submit', function (e) {
-                e.preventDefault();
-
+                e.preventDefault(); // Stop form temporarily
                 const acceptedStates = ["KY", "TN", "AR", "LA", "MO", "IN", "OH", "TX", "AZ"];
                 const mailState = $.trim($('#mailState').val().toUpperCase());
                 const physState = $.trim($('#physState').val().toUpperCase());
-
                 if (!acceptedStates.includes(mailState) || !acceptedStates.includes(physState)) {
                     alert("Sorry, we only accept applications from the following states:\nKY, TN, AR, LA, MO, IN, OH, TX, AZ.");
                     return;
                 }
-
                 const $form = $('#rtoForm');
                 const $confirmation = $('.form-submitted');
-
                 $form.fadeOut(300, function () {
-                    $confirmation.css({ display: 'block', opacity: 0 }).animate({ opacity: 1 }, 300);
+                    $confirmation.css({ display: 'block', opacity: 0 }).animate({ opacity: 1 }, 300, function () {
+                        $form.off('submit');
+                        $form.submit();
+                    });
                 });
             });
         });
